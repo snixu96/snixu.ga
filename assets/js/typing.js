@@ -5,19 +5,14 @@
 	actions: [
 		{type: 'erdemsweb.com'},
 		{delay: 300},
-		{type: ' | Sahip'},
+		{type: ' | Bir göz at!'},
 		{delay: 1000},
-		{remove: {num: 'erdemsweb.com | Sahip'.length}},
-		{type: 'Oyna ve Eğlen BOT'},
+		{remove: {num: 'erdemsweb.com | Bir göz at!'.length}},
+		{type: 'UploadPhotoMe'},
 		{delay: 300},
-		{type: ' | Topluluk Yöneticisi'},
+		{type: ' | Çok Yakında'},
 		{delay: 1000},
-		{remove: {num: 'Oyna ve Eğlen BOT | Topluluk Yöneticisi'.length}},
-		{type: 'Kahve BOT'},
-		{delay: 300},
-		{type: ' | Bot Moderatörü'},
-		{delay: 1000},
-		{remove: {num: 'Kahve BOT | Bot Moderatörü'.length}}
+		{remove: {num: 'UploadPhotoMe | Çok Yakında'.length}},
 	]
 	};
 	typeQuery
