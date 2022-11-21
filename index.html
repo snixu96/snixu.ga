@@ -12,7 +12,7 @@
   </head>
   <body>
     <div id="container">
-     <img style="border-radius: 50%;" src="1667556550980.jpg"/>
+     <img id="avatar" style="border-radius: 50%;" src=""/>
      <h1 class="title" style="color: var(--primary)" >erdem</h1>
      <h3 class="headline" style="color: var(--green)"><i class="fa-brands fa-spotify"></i> 
         <a id="spotifycontent" style="color: var(--green); font-size: 20px;">i'm not listening to anything right now</a>
@@ -37,6 +37,9 @@
     fetch("https://api.lanyard.rest/v1/users/889937921073881138").then(response => response.json()).then(e => {
         if(e.data["listening_to_spotify"]){
             content.innerText = `${e.data.spotify.song} - ${e.data.spotify.artist}`
+        }
+        if(e.data["discord_user"]){
+            document.getElementById("avatar").src = `https://cdn.discordapp.com/avatars/889937921073881138/${e.data["discord_user"].avatar}.png?size=4096`
         }
     });
 
