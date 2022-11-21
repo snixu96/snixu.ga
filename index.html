@@ -1,27 +1,64 @@
+
 <!DOCTYPE html>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="files/roboto.css">
-<link rel="stylesheet" href="files/bootstrap.css">
-<link rel="stylesheet" href="files/main.css">
-</head>
-<body style="background-color: #161616!important;">
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hackclub/css@79ee8661dfe9ab17af7d35cd8d9d7373029a8919/theme.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <style>
 
+    </style>
+  </head>
+  <body>
+    <div id="container">
+     <img style="border-radius: 50%;" src="1667556550980.jpg"/>
+     <h1 class="title" style="color: var(--primary)" >erdem</h1>
+     <h3 class="headline" style="color: var(--green)"><i class="fa-brands fa-spotify"></i> 
+        <a id="spotifycontent" style="color: var(--green); font-size: 20px;">i'm not listening to anything right now</a>
+    </h3>
+     <h4 style="color: var(--blue)">
+        <a href="https://github.com/erdem85"><i class="fa-brands fa-github icons"></i></a>
+        <a href="https://twitter.com/erdmeth"><i class="fa-brands fa-twitter icons"></i></a>
+        <a href="https://instagram.com/erdemhacisalihoglu"><i class="fa-brands fa-instagram icons"></i></a>
+        <a href="https://www.last.fm/user/erdempro"><i class="fa-brands fa-lastfm icons"></i></a>
+        <a href="https://www.linkedin.com/in/erdemhacisalihoglu/"><i class="fa-brands fa-linkedin icons"></i></a>
+        <a href="https://steamcommunity.com/id/erdemeth/"><i class="fa-brands fa-steam icons"></i></a>
+        <a href="https://discord.com/users/889937921073881138"><i class="fa-brands fa-discord icons"></i></a>
+        <a href="https://t.me/erdeth"><i class="fa-brands fa-telegram icons"></i></a>
+        
+     </h4>
+    </div>
+  </body>
+  <script>
+    let content = document.getElementById("spotifycontent");
+    let webSocket = new WebSocket("wss://api.lanyard.rest/socket");
+    
+    fetch("https://api.lanyard.rest/v1/users/889937921073881138").then(response => response.json()).then(e => {
+        if(e.data["listening_to_spotify"]){
+            content.innerText = `${e.data.spotify.song} - ${e.data.spotify.artist}`
+        }
+    });
 
-<title>erdems.js.org</title>
-<main class="text-center text-light" style="display: flex;min-height: calc(100vh - 188px);align-items: center; justify-content: center">
-<div>
-<h1 style="font-weight: bold; color: #65cafe;">github.com/erdem85</h1>
-
-<br>
-<a type="button" href="https://twitter.com/erdem727" target="_blank" class="btn btn-light"><i style="color:black" class="fab fa-twitter"></i> Twitter</a>
-<a type="button" href="https://t.me/erdemhacisalihoglu" target="_blank" class="btn btn-light"><i style="color:black" class="fab fa-telegram"></i> Telegram</a>
-<a type="button" href="https://steamcommunity.com/id/erdemhacisalihoglu/" target="_blank" class="btn btn-light"><i style="color:black" class="fab fa-steam"></i> Steam</a>
-<a type="button" href="https://discord.com/users/292692556809109534" target="_blank" class="btn btn-light"><i style="color:black" class="fab fa-discord"></i> Discord</a>
-</div>
-</main>
-
-<script src="files/jquery.js"></script>
-<script src="files/popper.js"></script>
-<script src="files/bootstrap.js"></script>
-
-</body></html>
+    
+    webSocket.addEventListener('message', (event) => {
+        data = JSON.parse(event.data)
+        if(event.data == "{\"op\":1,\"d\":{\"heartbeat_interval\":30000}}"){
+            webSocket.send(JSON.stringify({
+                op: 2,
+                d: {
+                    subscribe_to_id: "889937921073881138"
+                }
+            }))
+        }
+        if(data.t == "PRESENCE_UPDATE"){
+            if(data.d.spotify){
+            content.innerText = `${data.d.spotify.song} - ${data.d.spotify.artist}`
+            }else{
+                content.innerText = `i'm not listening to anything right now`
+            }
+        }
+        
+    })
+  </script>
+</html>
