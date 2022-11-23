@@ -7,25 +7,21 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hackclub/css@79ee8661dfe9ab17af7d35cd8d9d7373029a8919/theme.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <style>
-
+  @import url('https://fonts.googleapis.com/css2?family=Bakbak+One&family=Poppins:wght@200&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
     </style>
   </head>
   <body>
     <div id="container">
      <img id="avatar" style="border-radius: 50%;" src=""/>
-     <h1 class="title" style="color: var(--primary)" >erdem</h1>
+     <h1 class="title" style="color: var(--primary)" >snixu</h1>
      <h3 class="headline" style="color: var(--green)"><i class="fa-brands fa-spotify"></i> 
-        <a id="spotifycontent" style="color: var(--green); font-size: 20px;">i'm not listening to anything right now</a>
+        <a id="spotifycontent" style="color:black; font-size: 20px;">i'm not listening to anything right now</a>
     </h3>
      <h4 style="color: var(--blue)">
-        <a href="https://github.com/erdem85"><i class="fa-brands fa-github icons"></i></a>
-        <a href="https://twitter.com/erdmeth"><i class="fa-brands fa-twitter icons"></i></a>
-        <a href="https://instagram.com/erdemhacisalihoglu"><i class="fa-brands fa-instagram icons"></i></a>
-        <a href="https://www.last.fm/user/erdempro"><i class="fa-brands fa-lastfm icons"></i></a>
-        <a href="https://www.linkedin.com/in/erdemhacisalihoglu/"><i class="fa-brands fa-linkedin icons"></i></a>
-        <a href="https://steamcommunity.com/id/erdemeth/"><i class="fa-brands fa-steam icons"></i></a>
-        <a href="https://discord.com/users/889937921073881138"><i class="fa-brands fa-discord icons"></i></a>
-        <a href="https://t.me/erdeth"><i class="fa-brands fa-telegram icons"></i></a>
+        <a href="https://github.com/snixu96"><i class="fa-brands fa-github icons"></i></a>
+        <a href="https://discord.com/users/1019641343875760350"><i class="fa-brands fa-discord icons"></i></a>
+       
         
      </h4>
     </div>
@@ -33,7 +29,7 @@
   <script>
     let content = document.getElementById("spotifycontent");
     let webSocket = new WebSocket("wss://api.lanyard.rest/socket");
-    let discordID = "889937921073881138"
+    let discordID = "1019641343875760350"
     
     fetch("https://api.lanyard.rest/v1/users/"+discordID).then(response => response.json()).then(e => {
         if(e.data["listening_to_spotify"]){

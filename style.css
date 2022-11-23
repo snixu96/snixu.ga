@@ -1,6 +1,6 @@
 body {
     text-align: center;
-    background-color: rgb(28, 20, 10);
+    background-image: url("anime_bg_blur.gif");
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,3 +16,8 @@ i.icons  {
     padding-bottom: 10px;
     color: var(--blue)
 }
+#spotifycontent{
+    font-family: 'Bakbak One', cursive;
+font-family: 'Poppins', sans-serif
+}
+.title{font-family: 'Secular One', sans-serif;}
